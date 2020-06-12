@@ -17,9 +17,11 @@ jobs:
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
         ruby-version: 2.7
+    - name: Install prerequisite
+      run: sudo apt install sqlite3 libsqlite3-dev
     - name: Install dependencies
       run: bundle install
     - uses: miloserdow/capistrano-deploy@v2.1
       with:
         target: production
-        deploy_key: ${{ secrets.DEPLOY_ENC_KEY }}
+        deploy_key: ${{ secrets.DEPLOY_ENC_KEY_PASSWORD }}
