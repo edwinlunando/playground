@@ -18,7 +18,7 @@ jobs:
       with:
         ruby-version: 2.7
     - name: Install prerequisite
-      run: sudo apt install sqlite3 libsqlite3-dev
+      run: sudo apt update && sudo apt install sqlite3 libsqlite3-dev
     - name: Install dependencies
       run: bundle install
     - uses: miloserdow/capistrano-deploy@v2.1
