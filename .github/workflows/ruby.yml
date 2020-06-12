@@ -28,7 +28,7 @@ jobs:
       with:
         ruby-version: 2.7
     - name: Install prerequisite
-      run: sudo apt install sqlite3 libsqlite3-dev
+      run: sudo apt-get update && sudo apt-get install sqlite3 libsqlite3-dev
     - name: Install dependencies
       run: bin/setup
     - name: Precompile assets
