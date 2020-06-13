@@ -15,18 +15,17 @@ spec:
         app: playground-helloworld
     spec:
       containers:
-      - name: playground
-        image: docker.pkg.github.com/edwinlunando/playground/latest:8c63f64b50473bff57dc388f3b3665017a530de5
-        ports:
-        - containerPort: 3000
-        env:
-        - name: RAILS_ENV
-          value: production
-        - name: RAILS_LOG_TO_STDOUT
-          value: true
-        envFrom:
-          - secretRef:
-              name: secret-env
-
+        - name: playground
+          image: docker.pkg.github.com/edwinlunando/playground/latest:8c63f64b50473bff57dc388f3b3665017a530de5
+          ports:
+            - containerPort: 3000
+          env:
+            - name: RAILS_ENV
+              value: production
+            - name: RAILS_LOG_TO_STDOUT
+              value: "1"
+          envFrom:
+            - secretRef:
+                name: secret-env
       imagePullSecrets:
-      - name: regcred
+        - name: regcred
