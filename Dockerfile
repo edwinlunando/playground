@@ -13,7 +13,8 @@ RUN apk --update add --no-cache \
   mariadb-dev \
   ruby-dev \
   tzdata \
-  yarn
+  yarn \
+  sqlite-dev
 
 WORKDIR /app
 
