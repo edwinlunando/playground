@@ -10,7 +10,7 @@ on:
 
 env:
   IMAGE: playground
-  REGISTRY_HOSTNAME: hub.docker.com
+  REGISTRY_HOSTNAME: docker.pkg.github.com
   DEPLOYMENT_NAME: gke-test
   NAME: edwinlunando
 
@@ -43,6 +43,9 @@ jobs:
 
     - name: Save DigitalOcean kubeconfig
       run: doctl kubernetes cluster kubeconfig save glaceon
+
+    - name: Docker login
+      run: docker login https://docker.pkg.github.com -u edwinlunando -p ${{ secrets.DOCKER_PASSWORD }}
 
     # Build the Docker image
     - name: Build
