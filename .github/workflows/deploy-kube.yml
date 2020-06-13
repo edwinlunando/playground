@@ -72,5 +72,4 @@ jobs:
         chmod u+x /usr/local/bin/kustomize
         kustomize edit set image "$REGISTRY_HOSTNAME"/"$NAME"/"$IMAGE"/latest:"$GITHUB_SHA"
         kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
