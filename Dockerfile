@@ -30,9 +30,7 @@ RUN CFLAGS="-Wno-cast-function-type" \
 
 RUN yarn install
 
-RUN echo $RAILS_ENV
-
-RUN RAILS_ENV=production bundle exec rails webpacker:compile
+RUN bundle exec rails webpacker:compile
 
 # Add all bin to PATH
 ENV PATH "$PATH:/app/bin"

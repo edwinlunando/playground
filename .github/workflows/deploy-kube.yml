@@ -52,6 +52,8 @@ jobs:
     - name: Build
       run: |
         docker build -t "$REGISTRY_HOSTNAME"/"$NAME"/"$IMAGE"/latest:"$GITHUB_SHA" \
+          --build-arg RAILS_ENV="$RAILS_ENV" \
+          --build-arg SECRET_KEY_BASE="$SECRET_KEY_BASE" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" .
     # Push the Docker image to Google Container Registry
