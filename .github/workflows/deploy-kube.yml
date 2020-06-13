@@ -70,7 +70,7 @@ jobs:
         curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
         ls -lah
         ls /usr/local/bin
-        mv kustomize /usr/local/bin/kustomize
+        sudo mv kustomize /usr/local/bin/kustomize
         chmod u+x /usr/local/bin/kustomize
         kustomize edit set image "$REGISTRY_HOSTNAME"/"$NAME"/"$IMAGE"/latest:"$GITHUB_SHA"
         kustomize build . | kubectl apply -f -
