@@ -26,7 +26,7 @@ RUN CFLAGS="-Wno-cast-function-type" \
 
 RUN yarn install
 
-RUN RAILS_ENV=production bundle exec rails webpacker:compile
+RUN bin/rails webpacker:compile
 
 COPY . .
 
