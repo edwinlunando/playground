@@ -18,6 +18,7 @@ RUN apk --update add --no-cache \
 
 WORKDIR /app
 
+COPY . /app
 COPY Gemfile Gemfile.lock ./
 COPY vendor ./vendor
 
@@ -31,7 +32,8 @@ RUN yarn install
 
 RUN bundle exec rails webpacker:compile
 
-COPY . .
+# Add all bin to PATH
+ENV PATH "$PATH:/app/bin"
 
 EXPOSE 3000
 
