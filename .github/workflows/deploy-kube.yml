@@ -45,6 +45,9 @@ jobs:
     - name: Save DigitalOcean kubeconfig
       run: doctl kubernetes cluster kubeconfig save glaceon
 
+    - name: Debug doctl
+      run: which doctl
+
     - name: Docker login
       run: docker login https://docker.pkg.github.com -u edwinlunando -p ${{ secrets.DOCKER_PASSWORD }}
 
@@ -66,7 +69,9 @@ jobs:
       run: |
         curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
         ls -lah
-        chmod u+x ./kustomize
+        ls /usr/local/bin
+        mv kustomize /usr/local/bin/kustomize
+        chmod u+x /usr/local/bin/kustomize
         kustomize edit set image "$REGISTRY_HOSTNAME"/"$NAME"/"$IMAGE"/latest:"$GITHUB_SHA"
         kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
