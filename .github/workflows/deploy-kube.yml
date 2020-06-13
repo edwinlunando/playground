@@ -56,4 +56,4 @@ jobs:
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |
-        docker push $NAME/$IMAGE/latest:$GITHUB_SHA
+        docker push $REGISTRY_HOSTNAME/$NAME/$IMAGE/latest:$GITHUB_SHA
