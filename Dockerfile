@@ -20,13 +20,16 @@ WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 COPY vendor ./vendor
+
+RUN bundle config set deployment 'true'
+RUN bundle config set without 'test development'
 RUN CFLAGS="-Wno-cast-function-type" \
   BUNDLE_FORCE_RUBY_PLATFORM=1 \
-  bundle install --deployment --without test development --jobs=4
+  bundle install --jobs=4
 
 RUN yarn install
 
-RUN bin/rails webpacker:compile
+RUN bundle exec rails webpacker:compile
 
 COPY . .
 
