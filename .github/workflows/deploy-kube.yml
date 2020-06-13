@@ -36,6 +36,14 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
 
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Save DigitalOcean kubeconfig
+      run: doctl kubernetes cluster kubeconfig save glaceon
+
     # Build the Docker image
     - name: Build
       run: |
