@@ -22,7 +22,7 @@ COPY Gemfile Gemfile.lock ./
 COPY vendor ./vendor
 RUN CFLAGS="-Wno-cast-function-type" \
   BUNDLE_FORCE_RUBY_PLATFORM=1 \
-  bundle install --clean --deployment --without test development --jobs=4
+  bundle install --deployment --without test development --jobs=4
 
 RUN yarn install
 
