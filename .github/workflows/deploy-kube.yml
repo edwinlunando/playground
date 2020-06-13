@@ -50,10 +50,10 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |
-        docker build -t edwinlunando/"$IMAGE":"$GITHUB_SHA" \
+        docker build -t edwinlunando/"$IMAGE"/latest:"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" .
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |
-        docker push $NAME/$IMAGE:$GITHUB_SHA
+        docker push $NAME/$IMAGE/latest:$GITHUB_SHA
