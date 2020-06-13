@@ -64,8 +64,8 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |
-        curl -o kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.6.1/kustomize_3.6.1_linux_amd64
-        chmod u+x kustomize
+        curl -o /usr/local/bin/kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.6.1/kustomize_3.6.1_linux_amd64
+        chmod u+x /usr/local/bin/kustomize
         kustomize edit set image "$REGISTRY_HOSTNAME"/"$NAME"/"$IMAGE"/latest:"$GITHUB_SHA"
         kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
