@@ -30,6 +30,9 @@ RUN CFLAGS="-Wno-cast-function-type" \
 
 RUN yarn install
 
+RUN echo $RAILS_ENV
+RUN echo $SECRET_KEY_BASE
+
 RUN bundle exec rails webpacker:compile
 
 # Add all bin to PATH
